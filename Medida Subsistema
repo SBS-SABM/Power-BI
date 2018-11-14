@@ -1,0 +1,6 @@
+Para obtener la medida del total de subistema por determinado periodo se necesita crear una columna aparte que sirva como llave para la función Calculate
+En esta columna se concatena el tipo de entidad para definir el subsistema y el periodo, sea añomes, año 
+KEY = VW_ANEXO_02[PERIODO_ID] & VW_ANEXO_02[TIPO_ENTIDAD]
+Luego se realiza la función Calculate utilizando com filtro la llave antes definida.
+SumSubsistema = CALCULATE(SUM(VW_ANEXO_02[TOTAL_CREDITOS]),ALLEXCEPT(VW_ANEXO_02,VW_ANEXO_02[KEY]))
+Para utilizar esta variable en los gráficos se debe definir como Max, Min o Avg, para obtener el valor calculado.
